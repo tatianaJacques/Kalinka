@@ -1,0 +1,20 @@
+{
+  "name": "gulpStarter2",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Tatiana Jacques"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/damienmoulin/Room-saveur-FRONT-",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}

@@ -1,0 +1,19 @@
+// Reset
+@import '../../../node_modules/normalize.scss/normalize';
+
+//vendor
+@import "vendor/animate.scss";
+@import "vendor/material-design-iconic-font.min.scss";
+
+
+//base
+@import 'base/variables';
+@import 'base/mixins';
+@import "base/icons";
+@import 'base/layout';
+@import 'base/media';
+@import "base/zIndex";
+
+@import "components/home";
+@import "components/menu";
+@import "components/about";

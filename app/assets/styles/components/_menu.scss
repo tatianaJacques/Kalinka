@@ -1,7 +1,76 @@
 .Menu {
   opacity: 0;
+  display: none;                        
 
-  .visible {
-    opacity: 1;
+  &.visible {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $color1-lighter;
+  }
+
+  .logo {
+    display: flex;
+    width: 330px;
+    align-items: center;
+  }
+
+  svg {
+    width: 50px;
+    height: 50px;
+    color: $color1;
+    margin-left: 10px;
+  }
+  
+  .title {
+    color: $color1;
+    opacity: 0;
+    font-size: 2rem;
+    font-family: $Courgette;
+    letter-spacing: 2px;
+    margin-left: 8px;
+
+    &.visible {
+      opacity: 1;
+    };
+  }
+
+  .button-01 {
+    display: flex;
+    margin-right: 15px;
+    opacity: 0;
+    transition:  ease .5s;
+    
+    a {
+      color: $color1;
+      margin: 0px;
+      padding: 0px;
+      height: 29px;
+      line-height: 20px;
+      box-sizing: border-box;
+      padding-top: 9px;
+      width: 150px;
+      text-align: center;
+      padding-left: 9px;
+      transition: ease .5s;
+
+      &:hover {
+        color: $color1-dark;
+      }
+
+      &:before {
+        border-color: $color1;
+      }
+
+      &:after {
+        border-color: $color1-dark;
+      }
+    }
+
   }
 }

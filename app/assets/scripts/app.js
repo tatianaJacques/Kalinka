@@ -40,6 +40,24 @@ $(document).ready(function () {
         setTimeout(function () {
             $('body').addClass('color-white');
             $('.Home').remove();
+            $('.Menu').addClass('visible animated fadeInDown');
+
+            var $svg = $('.Menu svg').drawsvg({
+                "duration": 800,
+                callback: function () {
+
+                    var letters = $('.Menu .title');
+                    letters.addClass('visible');
+                    letters.textillate({
+                        in: {effect: 'fadeInRight'},
+                    });
+
+                    $('.button-01').css('opacity','1');
+                }
+            });
+
+            $svg.drawsvg('animate');
+
         }, 1000);
 
     })
@@ -47,31 +65,6 @@ $(document).ready(function () {
 
 
 var kalinka = angular.module('kalinka', []);
-
-
-/**
- * Données du menu
- *
- * @param menu
- *            contient une liste de contenu du menu
- */
-kalinka.controller('MenuController', function menuController($scope, $http) {
-
-    $http({
-        method: 'GET',
-        url: "ajax/infos.json"
-
-    }).then(function successCallback(response) {
-
-        var menu = response.data.menu;
-
-        $scope.menu = menu;
-
-    }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-    });
-});
 
 
 /**
@@ -108,79 +101,6 @@ kalinka.controller('HomeController', function HomeController($scope, $http) {
 });
 
 
-/**
- * Contient les projets
- *
- * @param projets
- *
- * Contient nom, date, lieu, ecole, keys, image, description
- *
- */
-kalinka.controller('TimelineController', function TimelineController($scope, $http) {
-
-    $http({
-        method: 'GET',
-        url: "ajax/infos.json"
-
-    }).then(function successCallback(response) {
-
-        var projets = [response.data.projets];
-        var projetsTab = [];
-
-        for (var i = 0; i < projets[0].length; i++) {
-            projetsTab.push(projets[0][i]);
-        }
-
-        $scope.projets = projetsTab;
-
-        $scope.projets.openPopin = function (projet) {
-            url = projet.popin;
-
-            $http({
-                method: 'GET',
-                url: url
-
-            }).then(function successCallback(response) {
-
-                console.log(response.data);
-
-                $('body').addClass('no-scroll');
-
-                $('.Popin').html(response.data);
-                $('.Popin').addClass('visible');
-
-                setTimeout(function () {
-                    $('.Popin').addClass('animated fadeInDown');
-                }, 300);
-
-                $('.Popin .close').on('click', function () {
-                    $('.Popin').removeClass('fadeInDown').addClass('fadeOutUp');
-                    $('body').removeClass('no-scroll');
-
-                    setTimeout(function () {
-                        $('.Popin').removeClass('animated fadeOutUp');
-                        $('.Popin').empty();
-                        $('.Popin').removeClass('visible');
-                    }, 300);
-
-
-                })
-
-            }, function errorCallback(response) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
-
-        }
-
-    }, function errorCallback(response) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-    });
-
-
-});
-
 /*
  * Données du about
  *
@@ -210,4 +130,6 @@ kalinka.controller('AboutController', function aboutController($scope, $http) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
     });
+
+    
 });
